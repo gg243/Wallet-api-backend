@@ -3,7 +3,6 @@ import { useRouter } from "expo-router";
 import { useEffect, useState } from "react";
 import { useTrasnactions } from "../../hooks/useTransactions";
 import { styles } from "../../assets/styles/home.styles";
-import { FlatList, Image, TouchableOpacity, View } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { BalanceCard } from "../../components/BalanceCard";
 
