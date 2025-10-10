@@ -15,7 +15,7 @@ export const useTransactions = (userId) => {
 
   const fetchTransactions = useCallback(async () => {
     try {
-      const response = await fretch(`$(API_URL)/transactions/user/${userId}`);
+      const response = await fetch(`$(API_URL)/transactions/user/${userId}`);
       const data = await response.json();
       setTransactions(data);
     } catch (error) {

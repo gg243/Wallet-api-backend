@@ -15,16 +15,6 @@ import { styles } from "../../assets/styles/create.styles";
 import { COLORS } from "../../constants/colors";
 import { Ionicons } from "@expo/vector-icons";
 
-const CATEGORIES = [
-  { id: "food", name: "Food & Drinks", icon: "fast-food" },
-  { id: "shopping", name: "Shopping", icon: "cart" },
-  { id: "transportation", name: "Transportation", icon: "car" },
-  { id: "entertainment", name: "Entertainment", icon: "film" },
-  { id: "bills", name: "Bills", icon: "receipt" },
-  { id: "income", name: "Income", icon: "cash" },
-  { id: "other", name: "Other", icon: "ellipsis-horizontal" },
-];
-
 const CreateScreen = () => {
   const router = useRouter();
   const { user } = useUser();
@@ -36,20 +26,20 @@ const CreateScreen = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   const handleCreate = async () => {
-    // validations
+    //validations
     if (!title.trim())
-      return Alert.alert("Error", "Please enter a transaction title");
+      return Alert.alert("Error", "Please Enter a Transaction Titlee");
     if (!amount || isNaN(parseFloat(amount)) || parseFloat(amount) <= 0) {
-      Alert.alert("Error", "Please enter a valid amount");
+      Alert.alert("Error", "please enter a Valid Amount");
       return;
     }
 
     if (!selectedCategory)
-      return Alert.alert("Error", "Please select a category");
+      return Alert.alert("Error", "Please Select A Cateegory");
 
     setIsLoading(true);
+
     try {
-      // Format the amount (negative for expenses, positive for income)
       const formattedAmount = isExpense
         ? -Math.abs(parseFloat(amount))
         : Math.abs(parseFloat(amount));
@@ -73,11 +63,12 @@ const CreateScreen = () => {
         throw new Error(errorData.error || "Failed to create transaction");
       }
 
-      Alert.alert("Success", "Transaction created successfully");
+      Alert.alert("Success", "Transacation successful");
+
       router.back();
     } catch (error) {
-      Alert.alert("Error", error.message || "Failed to create transaction");
-      console.error("Error creating transaction:", error);
+      Alert.alert("Error", "failed to create transaction");
+      conslole.error("Error creating transaction", error);
     } finally {
       setIsLoading(false);
     }
